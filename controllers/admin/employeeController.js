@@ -78,6 +78,41 @@ class AdminEmployeeController {
       next(error)
     }
   }
+
+  static getAllEmployee = async(req, res, next) => {
+    try {
+      let {username, order_from, order_by, page, limit} = req.query
+      let params = {
+        username: !username? "": username,
+        order_from: !order_from? "id": order_from,
+        order_by: !order_by? "DESC": order_by,
+        page: !page? 0: +page - 1,
+        limit: !limit? 10: +limit,
+      }
+
+      let all = await AdminEmployeeService.getAllEmployee(params, next)
+      if (all) {
+        res.status(200).json(all)
+      }
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  static getOneAttendance = async(req, res, next) => {
+    try {
+      let {att_id} = req.params
+      let params = {
+        att_id: +att_id
+      }
+      let finded = await AdminEmployeeService.getOneAttendance(params, next)
+      if (finded) {
+        res.status(200).json(finded)
+      }
+    } catch (error) {
+      next(error)
+    }
+  }
 }
 
 module.exports = AdminEmployeeController

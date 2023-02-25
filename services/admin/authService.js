@@ -25,7 +25,8 @@ class AdminAuthService {
 
       let payload = {
         id: targetAdmin.id,
-        username: targetAdmin.username
+        username: targetAdmin.username,
+        role: "admin"
       }
 
       let jwt = signToken(payload)

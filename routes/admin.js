@@ -12,5 +12,7 @@ router.post("/employee", AdminEmployeeController.createNewEmployee)
 router.put("/employee/:employee_id", AdminEmployeeController.updateEmployee)
 router.delete("/employee/:employee_id", AdminEmployeeController.deleteEmployee)
 router.get("/employee/attendance", AdminEmployeeController.getAllAttendance)
+router.get("/employee/attendance/:att_id", AdminEmployeeController.getOneAttendance)
+router.get("/employee", AdminEmployeeController.getAllEmployee)
 
 module.exports = router

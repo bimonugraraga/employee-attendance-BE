@@ -25,7 +25,8 @@ class EmployeeAuthService {
 
       let payload = {
         id: targetEmployee.id,
-        username: targetEmployee.username
+        username: targetEmployee.username,
+        role: "employee"
       }
 
       let jwt = signToken(payload)

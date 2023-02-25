@@ -119,6 +119,58 @@ class AdminEmployeeService {
       next(error)
     }
   }
+
+  static getAllEmployee = async(params, next) => {
+    try {
+      let offset = null
+      if (params.limit){
+        offset = params.page * params.limit
+      }
+      
+      let finded = await Employee.findAndCountAll({
+        where: {
+          username: {
+            [Op.iLike]: `%${params.username}%`
+          }
+        },
+        attributes: ['id', 'username'],
+        distinct:true,
+        limit : params.limit? params.limit: null,
+        offset: offset,
+        order:[[params.order_from, params.order_by]]
+      })
+
+      return finded
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  static getOneAttendance = async(params, next) => {
+    try {
+      let targetAtt = await Attendance.findOne({
+        where: {
+          id: params.att_id
+        },
+        include: [
+          {
+            model: Employee,
+            attributes: ['id', 'username'],
+          }
+        ],
+      })
+
+      if (!targetAtt) {
+        throw {
+          code: 404,
+          message: "Data Not Found"
+        }
+      }
+      return targetAtt
+    } catch (error) {
+      next(error)
+    }
+  }
 }
 
 module.exports = AdminEmployeeService
