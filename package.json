@@ -1,0 +1,31 @@
+{
+  "name": "employee-attendance-be",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bimonugraraga/employee-attendance-BE.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bimonugraraga/employee-attendance-BE/issues"
+  },
+  "homepage": "https://github.com/bimonugraraga/employee-attendance-BE#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "pg": "^8.9.0",
+    "sequelize": "^6.29.0",
+    "sequelize-cli": "^6.6.0",
+    "strong-params": "^1.0.0"
+  }
+}
