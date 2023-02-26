@@ -61,11 +61,11 @@ class AdminEmployeeController {
     try {
       let {date_attendance, username, order_from, order_by, page, limit} = req.query
       let params = {
-        date_attendance,
+        date_attendance: !date_attendance? undefined: date_attendance,
         username: !username? "": username,
         order_from: !order_from? "id": order_from,
         order_by: !order_by? "DESC": order_by,
-        page: !page? 0: +page - 1,
+        page: !+page? 0: +page - 1,
         limit: !limit? 10: +limit,
       }
 
@@ -86,7 +86,7 @@ class AdminEmployeeController {
         username: !username? "": username,
         order_from: !order_from? "id": order_from,
         order_by: !order_by? "DESC": order_by,
-        page: !page? 0: +page - 1,
+        page: !+page? 0: +page - 1,
         limit: !limit? 10: +limit,
       }
 

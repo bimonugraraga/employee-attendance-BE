@@ -123,10 +123,11 @@ class AdminEmployeeService {
   static getAllEmployee = async(params, next) => {
     try {
       let offset = null
+      // console.log(params)
       if (params.limit){
         offset = params.page * params.limit
       }
-      
+      console.log(params)
       let finded = await Employee.findAndCountAll({
         where: {
           username: {
